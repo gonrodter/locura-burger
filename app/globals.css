@@ -1,0 +1,302 @@
+@import "tailwindcss";
+
+:root {
+  /* Identidad Locura Burger */
+  --verde: #7fc942;
+  --verde-oscuro: #59a02c;
+  --tinta: #101010;
+  --hueso: #f2ede3;
+  --fuego: #ff5a1f;
+  --queso: #ffc93c;
+
+  --background: var(--hueso);
+  --foreground: var(--tinta);
+}
+
+@theme inline {
+  --color-verde: var(--verde);
+  --color-verde-oscuro: var(--verde-oscuro);
+  --color-tinta: var(--tinta);
+  --color-hueso: var(--hueso);
+  --color-fuego: var(--fuego);
+  --color-queso: var(--queso);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-display: var(--font-anton);
+  --font-sans: var(--font-archivo);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--verde);
+  color: var(--tinta);
+}
+
+/* Tipografía display */
+.display {
+  font-family: var(--font-anton), Impact, sans-serif;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.outline-text {
+  -webkit-text-stroke: 2px currentColor;
+  -webkit-text-fill-color: transparent;
+  paint-order: stroke fill;
+}
+
+@media (max-width: 768px) {
+  .outline-text {
+    -webkit-text-stroke-width: 1.2px;
+  }
+}
+
+/* Cursor personalizado: solo en dispositivos con puntero fino */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button {
+    cursor: none;
+  }
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 999px;
+  background: var(--verde);
+  box-shadow: 0 0 0 1.5px rgba(16, 16, 16, 0.75);
+}
+
+.cursor-ring {
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  border-radius: 999px;
+  /* Doble contorno claro/oscuro en vez de mix-blend-mode: se lee sobre
+     cualquier fondo sin forzar repintados de página completa en cada
+     mousemove (eso hacía tiritar los marquees). */
+  border: 1.5px solid var(--hueso);
+  box-shadow:
+    0 0 0 1.5px rgba(16, 16, 16, 0.6),
+    inset 0 0 0 1.5px rgba(16, 16, 16, 0.6);
+  display: grid;
+  place-items: center;
+  transition:
+    width 0.28s cubic-bezier(0.25, 1, 0.4, 1),
+    height 0.28s cubic-bezier(0.25, 1, 0.4, 1),
+    margin 0.28s cubic-bezier(0.25, 1, 0.4, 1),
+    background-color 0.28s ease,
+    border-color 0.28s ease,
+    opacity 0.2s ease;
+}
+
+.cursor-ring .cursor-label {
+  font-family: var(--font-anton), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--tinta);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  user-select: none;
+}
+
+.cursor-ring.is-hover {
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  background: color-mix(in srgb, var(--verde) 25%, transparent);
+  border-color: var(--verde-oscuro);
+}
+
+.cursor-ring.is-label {
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  background: var(--verde);
+  border-color: var(--verde);
+  box-shadow: 0 0 0 1.5px rgba(16, 16, 16, 0.6);
+}
+
+.cursor-ring.is-label .cursor-label {
+  opacity: 1;
+}
+
+.cursor-ring.is-pressed {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+}
+
+/* Extrusión sólida: una sola sombra desplazada deja muescas en las esquinas
+   opuestas al tener border-radius, porque es una copia desplazada del propio
+   rectángulo. Apilando desplazamientos de 1px la unión queda continua. */
+.extrude {
+  box-shadow:
+    1px 1px 0 0 var(--extrude-color, var(--tinta)),
+    2px 2px 0 0 var(--extrude-color, var(--tinta)),
+    3px 3px 0 0 var(--extrude-color, var(--tinta)),
+    4px 4px 0 0 var(--extrude-color, var(--tinta)),
+    5px 5px 0 0 var(--extrude-color, var(--tinta)),
+    6px 6px 0 0 var(--extrude-color, var(--tinta)),
+    7px 7px 0 0 var(--extrude-color, var(--tinta)),
+    8px 8px 0 0 var(--extrude-color, var(--tinta)),
+    9px 9px 0 0 var(--extrude-color, var(--tinta)),
+    10px 10px 0 0 var(--extrude-color, var(--tinta)),
+    11px 11px 0 0 var(--extrude-color, var(--tinta)),
+    12px 12px 0 0 var(--extrude-color, var(--tinta)),
+    13px 13px 0 0 var(--extrude-color, var(--tinta)),
+    14px 14px 0 0 var(--extrude-color, var(--tinta));
+}
+
+/* En móvil, las cartas del carrusel heredan la profundidad gráfica del hero.
+   La inclinación alterna rompe la fila perfecta sin perjudicar el scroll-snap. */
+@media (max-width: 767px) {
+  .burger-card-mobile:nth-child(odd) {
+    transform: rotate(-0.75deg);
+  }
+
+  .burger-card-mobile:nth-child(even) {
+    transform: rotate(0.75deg);
+  }
+}
+
+/* Las reseñas llevan una extrusión más corta que las burgers para conservar
+   la jerarquía: comparten lenguaje gráfico, pero siguen siendo más ligeras. */
+.resena-card {
+  box-shadow:
+    1px 1px 0 0 var(--verde-oscuro),
+    2px 2px 0 0 var(--verde-oscuro),
+    3px 3px 0 0 var(--verde-oscuro),
+    4px 4px 0 0 var(--verde-oscuro),
+    5px 5px 0 0 var(--verde-oscuro),
+    6px 6px 0 0 var(--verde-oscuro),
+    7px 7px 0 0 var(--verde-oscuro),
+    8px 8px 0 0 var(--verde-oscuro);
+}
+
+/* Sello circular del hero */
+@keyframes seal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.seal-spin {
+  animation: seal-spin 32s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seal-spin {
+    animation: none;
+  }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 28s) linear infinite;
+  /* Capa propia: el marquee no se re-rasteriza por lo que pase encima. */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Utilidades de máscara para reveals */
+.split-lines {
+  display: flex;
+  flex-direction: column;
+}
+
+.mask-line {
+  display: block;
+  overflow: hidden;
+  /* line-height 0.95 deja la caja más baja que el ascendente de Anton: las
+     tildes (Í, Ó) y el rabillo de la Ñ se salen y los recortaría el overflow.
+     El padding agranda solo la caja de recorte; el margen negativo lo compensa
+     para que la interlínea no cambie. */
+  padding-block: 0.22em;
+  margin-block: -0.22em;
+}
+
+.mask-line > span {
+  display: block;
+  will-change: transform;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 3px solid var(--verde-oscuro);
+  outline-offset: 3px;
+}
+
+/* Accesibilidad: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button {
+    cursor: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
