@@ -28,6 +28,28 @@ export default function Carne() {
 
     const mm = gsap.matchMedia();
 
+    mm.add("(max-width: 767px)", () => {
+      const steps = gsap.utils.toArray<HTMLElement>(".carne-step", pin);
+
+      steps.forEach((step) => {
+        gsap.fromTo(
+          step,
+          { y: 48, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.85,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: step,
+              start: "top 86%",
+              once: true,
+            },
+          },
+        );
+      });
+    });
+
     mm.add("(min-width: 768px)", () => {
       const steps = gsap.utils.toArray<HTMLElement>(".carne-step", pin);
 

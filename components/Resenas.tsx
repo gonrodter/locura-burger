@@ -80,7 +80,7 @@ export default function Resenas() {
       </div>
 
       <div className="mt-14 flex flex-col items-start gap-8 px-5 md:mt-20 md:flex-row md:items-end md:justify-between md:px-10">
-        <div className="flex items-end gap-6">
+        <div className="flex items-end gap-6" data-scroll-reveal="left">
           <p className="display leading-[0.8] text-[clamp(4.5rem,13vw,10rem)] text-verde">
             <span ref={notaRef}>{resenas.nota}</span>
           </p>
@@ -92,14 +92,16 @@ export default function Resenas() {
           </div>
         </div>
 
-        <MagneticButton
-          href={resenas.url}
-          external
-          cursorLabel="LEER"
-          className="display rounded-full border-2 border-hueso px-8 py-4 text-lg transition-colors hover:bg-hueso hover:text-tinta"
-        >
-          Ver todas en Google
-        </MagneticButton>
+        <div data-scroll-reveal="right">
+          <MagneticButton
+            href={resenas.url}
+            external
+            cursorLabel="LEER"
+            className="display rounded-full border-2 border-hueso px-8 py-4 text-lg transition-colors hover:bg-hueso hover:text-tinta"
+          >
+            Ver todas en Google
+          </MagneticButton>
+        </div>
       </div>
 
       <div className="resenas-muro mt-16 columns-1 gap-5 px-5 md:mt-20 md:columns-2 md:gap-6 md:px-10 lg:columns-3">

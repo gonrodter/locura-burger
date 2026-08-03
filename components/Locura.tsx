@@ -126,7 +126,7 @@ export default function Locura() {
 
       <ul className="mt-20 grid gap-6 px-5 md:grid-cols-2 md:gap-10 md:px-10">
         {locura.frases.map((frase, i) => (
-          <li key={i} className="border-t-2 border-tinta pt-4">
+          <li key={i} className="border-t-2 border-tinta pt-4" data-scroll-reveal="lift">
             <SplitLines className="display text-2xl md:text-4xl">
               <>{frase}</>
             </SplitLines>
@@ -138,7 +138,7 @@ export default function Locura() {
         <SplitLines className="display text-[clamp(1.8rem,5vw,3.6rem)]">
           <>{locura.quote}</>
         </SplitLines>
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex justify-center" data-scroll-reveal="up">
           <a
             href={brand.instagramUrl}
             target="_blank"

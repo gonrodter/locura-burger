@@ -9,11 +9,13 @@ import Locura from "@/components/Locura";
 import Resenas from "@/components/Resenas";
 import Visitanos from "@/components/Visitanos";
 import Footer from "@/components/Footer";
+import ScrollReveals from "@/components/ScrollReveals";
 
 export default function Home() {
   return (
     <SmoothScroll>
       <Preloader />
+      <ScrollReveals />
       <CustomCursor />
       <Nav />
       <main>

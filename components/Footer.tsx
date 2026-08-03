@@ -82,11 +82,11 @@ export default function Footer() {
     <footer ref={rootRef} className="bg-hueso px-4 pb-5 pt-10 sm:px-5 sm:pt-14">
       <div className="mx-auto w-full max-w-7xl overflow-hidden rounded-[28px] bg-tinta text-hueso shadow-[0_28px_80px_-60px_rgba(16,16,16,0.75)] transition-[max-width] duration-300 ease-out lg:hover:max-w-[calc(100vw-2.5rem)]">
         <div className="mx-auto max-w-7xl px-5 pb-0 pt-10 sm:px-8 sm:pt-14 lg:px-10">
-          <p className="display max-w-3xl text-[clamp(2rem,5vw,4.25rem)]">
+          <p className="display max-w-3xl text-[clamp(2rem,5vw,4.25rem)]" data-scroll-reveal="up">
             {footer.fraseFinal}
           </p>
 
-          <div className="mt-8">
+          <div className="mt-8" data-scroll-reveal="up">
             <MagneticButton
               href={ordering.cartaUrl}
               external
@@ -98,14 +98,14 @@ export default function Footer() {
           </div>
 
           <div className="mt-14 grid gap-9 border-t border-hueso/15 pt-10 sm:grid-cols-2 lg:grid-cols-4">
-            <div>
+            <div data-scroll-reveal="up">
               <p className="display text-2xl">{brand.name}</p>
               <p className="mt-4 max-w-[240px] text-sm font-medium leading-6 text-hueso/60">
                 {brand.claim}
               </p>
             </div>
 
-            <nav aria-label="Navegación del pie">
+            <nav aria-label="Navegación del pie" data-scroll-reveal="up" data-reveal-delay="0.06">
               <p className="text-sm font-bold uppercase tracking-[0.16em] text-verde">
                 Secciones
               </p>
@@ -124,7 +124,7 @@ export default function Footer() {
               </ul>
             </nav>
 
-            <nav aria-label="Legal">
+            <nav aria-label="Legal" data-scroll-reveal="up" data-reveal-delay="0.12">
               <p className="text-sm font-bold uppercase tracking-[0.16em] text-verde">
                 Legal
               </p>
@@ -143,7 +143,7 @@ export default function Footer() {
               </ul>
             </nav>
 
-            <div>
+            <div data-scroll-reveal="up" data-reveal-delay="0.18">
               <p className="text-sm font-bold uppercase tracking-[0.16em] text-verde">
                 Redes
               </p>

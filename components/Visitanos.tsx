@@ -17,7 +17,7 @@ export default function Visitanos() {
       </div>
 
       <div className="mt-16 grid gap-12 px-5 md:grid-cols-3 md:gap-8 md:px-10">
-        <div>
+        <div data-scroll-reveal="up">
           <h3 className="display mb-4 text-xl text-verde-oscuro">
             Dónde
           </h3>
@@ -38,7 +38,7 @@ export default function Visitanos() {
           </MagneticButton>
         </div>
 
-        <div>
+        <div data-scroll-reveal="up" data-reveal-delay="0.08">
           <h3 className="display mb-4 text-xl text-verde-oscuro">
             Cuándo
           </h3>
@@ -63,7 +63,7 @@ export default function Visitanos() {
           </table>
         </div>
 
-        <div>
+        <div data-scroll-reveal="up" data-reveal-delay="0.16">
           <h3 className="display mb-4 text-xl text-verde-oscuro">
             Pide
           </h3>
@@ -101,7 +101,7 @@ export default function Visitanos() {
         </div>
       </div>
 
-      <div className="mt-24 -rotate-1 border-y-2 border-tinta bg-queso py-3">
+      <div className="mt-24 -rotate-1 border-y-2 border-tinta bg-queso py-3" data-scroll-reveal="up">
         <Marquee
           items={[hours.resumen, contact.addressLine + ", " + contact.city, contact.phone]}
           className="display text-2xl md:text-3xl"

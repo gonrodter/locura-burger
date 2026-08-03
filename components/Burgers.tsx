@@ -66,6 +66,7 @@ export default function Burgers() {
           {burgers.map((b, i) => (
             <article
               key={b.slug}
+              data-scroll-reveal="lift"
               className={`burger-row border-t border-hueso/20 py-10 transition-opacity duration-300 ${
                 active === i ? "opacity-100" : "opacity-35"
               }`}
@@ -94,7 +95,7 @@ export default function Burgers() {
         <div className="relative">
           {/* El contenedor sticky no puede ser el padre de <Image fill>:
               necesita position relative/absolute. De ahí el div interior. */}
-          <div className="sticky top-24">
+          <div className="sticky top-24" data-scroll-reveal="scale">
             <div className="relative mx-auto aspect-square w-full max-w-[34rem] overflow-hidden rounded-2xl border-2 border-hueso/15">
               {burgers.map((b, i) => (
                 <Image
@@ -129,6 +130,8 @@ export default function Burgers() {
           <article
             key={b.slug}
             role="listitem"
+            data-scroll-reveal="up"
+            data-reveal-delay={Math.min(i * 0.05, 0.15)}
             className="burger-card-mobile extrude flex w-[82vw] shrink-0 snap-center flex-col rounded-2xl border-2 border-hueso/70 bg-[#191919] p-4 [--extrude-color:var(--verde-oscuro)]"
           >
             <div className="relative aspect-square overflow-hidden rounded-xl border-2 border-tinta">
@@ -163,7 +166,7 @@ export default function Burgers() {
         ))}
       </div>
 
-      <div className="flex justify-center pb-24">
+      <div className="flex justify-center pb-24" data-scroll-reveal="up">
         <MagneticButton
           href={ordering.cartaUrl}
           external
